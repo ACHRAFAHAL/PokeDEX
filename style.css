@@ -1,0 +1,188 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Fonts & Variables */
+  :root {
+    --card-radius: 12px;
+    --shadow-color: rgba(0,0,0,0.25);
+    /* Type colors */
+    --type-grass: #78C850;
+    --type-fire: #F08030;
+    --type-water: #6890F0;
+    --type-bug: #A8B820;
+    --type-normal: #A8A878;
+    --type-electric: #F8D030;
+    --type-psychic: #F85888;
+    --type-rock: #B8A038;
+    --type-fighting: #C03028;
+    --type-ground: #E0C068;
+  }
+  
+  /* Animated Gradient & Pokéball Pattern */
+  body {
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1), transparent),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1), transparent),
+                url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png');
+    background-repeat: repeat;
+    background-size: 100px 100px, 100px 100px, 50px 50px;
+    animation: movePattern 30s linear infinite;
+    z-index: -1;
+  }
+  
+  @keyframes movePattern {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); }
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    /* Overlay an animated gradient */
+    background: linear-gradient(120deg, #89f7fe, #66a6ff, #ff99cc, #fbc2eb);
+    background-size: 600% 600%;
+    animation: gradientBG 20s ease infinite;
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px #fff;
+  }
+  
+  .pokedex {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    z-index: 1;
+  }
+  
+  .pokemon-card {
+    position: relative;
+    background: #fff;
+    border-radius: var(--card-radius);
+    border: 4px solid #555;
+    overflow: hidden;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .pokemon-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px var(--shadow-color);
+  }
+  
+  /* Header ribbon */
+  .pokemon-card .ribbon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--ribbon-bg);
+    color: #fff;
+    padding: 6px 0;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  /* Pokéball watermark */
+  .pokemon-card::before {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.1;
+    bottom: 10px;
+    right: 10px;
+    pointer-events: none;
+  }
+  
+  .pokemon-card img {
+    display: block;
+    margin: 30px auto 10px;
+    width: 120px;
+    height: 120px;
+  }
+  
+  .pokemon-card .details {
+    padding: 0 20px 20px;
+    text-align: left;
+  }
+  .pokemon-card .details p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+  }
+  .pokemon-card .details .id {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #777;
+  }
+  .pokemon-card .details .types {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0;
+  }
+  .pokemon-card .type-badge {
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: #fff;
+    text-transform: capitalize;
+  }
+  
+  /* Type-specific ribbons & badges */
+  .pokemon-card.grass { --ribbon-bg: var(--type-grass); }
+  .pokemon-card.fire { --ribbon-bg: var(--type-fire); }
+  .pokemon-card.water { --ribbon-bg: var(--type-water); }
+  .pokemon-card.bug { --ribbon-bg: var(--type-bug); }
+  .pokemon-card.normal { --ribbon-bg: var(--type-normal); }
+  .pokemon-card.electric { --ribbon-bg: var(--type-electric); }
+  .pokemon-card.psychic { --ribbon-bg: var(--type-psychic); }
+  .pokemon-card.rock { --ribbon-bg: var(--type-rock); }
+  .pokemon-card.fighting { --ribbon-bg: var(--type-fighting); }
+  .pokemon-card.ground { --ribbon-bg: var(--type-ground); }
+  
+  .pokemon-card .ribbon { background: var(--ribbon-bg); }
+  .pokemon-card .type-badge.grass { background: var(--type-grass); }
+  .pokemon-card .type-badge.fire { background: var(--type-fire); }
+  .pokemon-card .type-badge.water { background: var(--type-water); }
+  .pokemon-card .type-badge.bug { background: var(--type-bug); }
+  .pokemon-card .type-badge.normal { background: var(--type-normal); }
+  .pokemon-card .type-badge.electric { background: var(--type-electric); }
+  .pokemon-card .type-badge.psychic { background: var(--type-psychic); }
+  .pokemon-card .type-badge.rock { background: var(--type-rock); }
+  .pokemon-card .type-badge.fighting { background: var(--type-fighting); }
+  .pokemon-card .type-badge.ground { background: var(--type-ground); }
