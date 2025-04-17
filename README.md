@@ -10,8 +10,8 @@ pokedex:
       pokedex/ 
               ├── index.html # Main HTML template 
               ├── style.css # All styles, variables, animations 
-              ├── app.js # Fetch & render logic 
-              └── README.md # Project overview and documentation 
+              └── app.js # Fetch & render logic 
+              
 </pre>
 ---
 
