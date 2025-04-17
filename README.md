@@ -6,11 +6,7 @@ A **Pokédex** is a digital encyclopedia of Pokémon—each entry details a Pok�
 
 pokedex: 
 
-  ├── index.html    # Main HTML template
-  ├── style.css     # All styles, variables, animations
-  ├── app.js        # Fetch & render logic
-  └── README.md     # Project overview and documentation
-
+<pre> ```bash pokedex/ ├── index.html # Main HTML template ├── style.css # All styles, variables, animations ├── app.js # Fetch & render logic └── README.md # Project overview and documentation ``` </pre>
 ---
 
 A special thank you to MLH for hosting GHW: API Week event and providing the platform and resources that made this project possible.
